@@ -11,10 +11,14 @@
     <bean id="rtAspect" class="my.spring.aspect.RtAspect" ></bean>
     <bean id="exceptionAspect" class="my.spring.aspect.ExceptionAspect"></bean>
 
-    <bean id="proxyedBean" class="my.spring.aspect.ProxyedBean"></bean>
+
+
+    <bean id="proxyedBean" class="my.spring.aspect.package1.ProxyedBean"></bean>
+    <bean id="proxyedBean2" class="my.spring.aspect.package2.ProxyedBean2"></bean>
+
 
     <aop:config>
-        <aop:pointcut id="myPointcut" expression="execution(public * my.spring.aspect..*.*(..))"/>
+        <aop:pointcut id="myPointcut" expression="execution(public * my.spring.aspect.package1..*.*(..)) ||  execution(public * my.spring.aspect.package2..*.*(..))"/>
         <aop:aspect ref="rtAspect">
             <aop:around method="raAround" pointcut-ref="myPointcut"/>
         </aop:aspect>

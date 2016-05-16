@@ -1,6 +1,7 @@
 package my.spring;
 
-import my.spring.aspect.ProxyedBean;
+import my.spring.aspect.package1.ProxyedBean;
+import my.spring.aspect.package2.ProxyedBean2;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -15,6 +16,8 @@ public class SpringMain {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath*:applicationContext.xml");
         ProxyedBean proxyedBean = (ProxyedBean)applicationContext.getBean("proxyedBean");
         proxyedBean.alertDate();
-        proxyedBean.throwException();
+//        proxyedBean.throwException();
+        ProxyedBean2 proxyedBean2 = (ProxyedBean2)applicationContext.getBean("proxyedBean2");
+        proxyedBean2.alertDate();
     }
 }
